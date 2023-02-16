@@ -37,8 +37,8 @@
                 <div style="flex:1">
                     <p class="quantity">{{ item.quantity }}</p>
                     <div class="quantity">
-                        <a><i class="fa-solid fa-chevron-up"></i></a>
-                        <a><i class="fa-solid fa-chevron-down"></i></a>
+                        <a data-product="{{ item.product.id }}" data-action="add" class="update-cart"><i class="fa-solid fa-chevron-up"></i></a>
+                        <a data-product="{{ item.product.id }}" data-action="remove" class="update-cart"><i class="fa-solid fa-chevron-down"></i></a>
                     </div>
                 </div>
                 <div style="flex:1">${{ item.get_total}}</div>
