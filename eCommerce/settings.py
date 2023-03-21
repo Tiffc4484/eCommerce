@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +28,7 @@ SECRET_KEY = "django-insecure-z327_!9@9!l=2@j_#bzct)em%r$wi&v%85+ku1ehqdljdmk6s*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -77,8 +80,12 @@ WSGI_APPLICATION = "eCommerce.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "eCommerce",
+        "USER": "admin",
+        "PASSWORD": "Cqq123456",
+        "HOST": "project3-mysql.cmnlidjxq2tq.us-east-1.rds.amazonaws.com",
+        "PORT": "3306",
     }
 }
 
