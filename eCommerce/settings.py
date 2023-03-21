@@ -13,6 +13,7 @@ import os.path
 from pathlib import Path
 
 import pymysql
+import requests
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,19 @@ SECRET_KEY = "django-insecure-z327_!9@9!l=2@j_#bzct)em%r$wi&v%85+ku1ehqdljdmk6s*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = [
+    '54.167.211.181',
+    '.compute-1.amazonaws.com', # allows viewing of instances directly
+]
+
+EC2_PRIVATE_IP = None
+try:
+    EC2_PRIVATE_IP = requests.get('http://169.254.169.254/latest/meta-data/local-ipv4', timeout=0.01).text
+except requests.exceptions.RequestException:
+    pass
+
+if EC2_PRIVATE_IP:
+    ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
 
 
 # Application definition
