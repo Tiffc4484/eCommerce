@@ -30,6 +30,7 @@ SECRET_KEY = "django-insecure-z327_!9@9!l=2@j_#bzct)em%r$wi&v%85+ku1ehqdljdmk6s*
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost',
     '54.167.211.181',
     '.compute-1.amazonaws.com', # allows viewing of instances directly
 ]
